@@ -24,7 +24,7 @@ use warnings;
 use 5.006_000;
 
 use vars qw( $VERSION );
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 use DynaLoader ();
 sub dl_load_flags { 0x01 }
