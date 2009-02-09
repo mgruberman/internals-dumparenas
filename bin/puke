@@ -40,7 +40,7 @@ sub main {
 
     # $perl->finishCurrentOpcode;
     $perl->pukeProcMaps;
-    $perl->pukeProcSmap;
+    $perl->pukeProcSmaps;
     $perl->pukeArenas;
 
     $perl->detach;
@@ -279,7 +279,7 @@ sub pukeProcMaps {
     my $pid = $self->pid;
     my $a = qq{open my(\$fh), q{/proc/$pid/maps} or die qq{Can't open /proc/$pid/maps: \$!}; while( my \$line = <\$fh> ) { print STDERR \$line }};
     my $b = qq{eval q{$a; 1} or warn \$\@};
-    my $c = qq{call Perl_eval_pv("$b",0)};
+    my $c = qq{call Perl_eval_pv("$b",0)\n};
 
     $self->send( $c );
     $self->expectPrompt;
@@ -293,7 +293,7 @@ sub pukeProcSmaps {
     my $pid = $self->pid;
     my $a = qq{open my(\$fh), q{/proc/$pid/smaps} or die qq{Can't open /proc/$pid/smaps: \$!}; while( my \$line = <\$fh> ) { print STDERR \$line }};
     my $b = qq{eval q{$a; 1} or warn \$\@};
-    my $c = qq{call Perl_eval_pv("$b",0)};
+    my $c = qq{call Perl_eval_pv("$b",0)\n};
 
     $self->send( $c );
     $self->expectPrompt;
