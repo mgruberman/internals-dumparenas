@@ -9,4 +9,5 @@ WriteMakefile(
 	PREREQ_PM => {
 		'Sub::Exporter' => 0,
 	},
+    EXE_FILES => [ 'bin/puke' ],
 );
