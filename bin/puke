@@ -339,4 +339,29 @@ sub setATHX {
 
 BEGIN { $INC{'Perl/Unthreaded.pm'} = $0 }
 
+packge Perl::Threaded;
+use Moose;
+# ...
+no Moose;
+use parent 'Perl';
+
+sub acceptsThisProcess {
+    my ( $class, $self ) = @_;
+
+    return 0 != $self->perlContextPtr;
+}
+
+sub setATHX {
+    my ( $self, @commands ) = @_;
+
+    for ( @commands ) {
+        s/\bATHX_\b/$perlContextPtr, /g;
+        s/\bATHX\b/$perlContextPtr/g;
+    }
+
+    return @commands;
+}
+
+BEGIN { $INC{'Perl/Threaded.pm'} = 1 }
+
 1;
