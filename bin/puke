@@ -277,37 +277,26 @@ sub pukeProcMaps {
     my ( $self ) = @_;
 
     my $pid = $self->pid;
+    my $a = qq{open my(\$fh), q{/proc/$pid/maps} or die qq{Can't open /proc/$pid/maps: \$!}; while( my \$line = <\$fh> ) { print STDERR \$line }};
+    my $b = qq{eval q{$a; 1} or warn \$\@};
+    my $c = qq{call Perl_eval_pv("$b",0)};
 
-    undef $!;
-    my $fh;
-    if ( ! open $fh, '<', "/proc/$pid/maps" ) {
-        return if ENOENT == $!;
-        warn "Can't open /proc/$pid/maps: $!";
-        return;
-    }
-    while ( my $line = <$fh> ) {
-        print $line;
-    }
+    $self->send( $c );
+    $self->expectPrompt;
 
     $self;
 }
 
-sub pukeProcSmap {
+sub pukeProcSmaps {
     my ( $self ) = @_;
 
     my $pid = $self->pid;
+    my $a = qq{open my(\$fh), q{/proc/$pid/smaps} or die qq{Can't open /proc/$pid/smaps: \$!}; while( my \$line = <\$fh> ) { print STDERR \$line }};
+    my $b = qq{eval q{$a; 1} or warn \$\@};
+    my $c = qq{call Perl_eval_pv("$b",0)};
 
-    undef $!;
-    my $fh;
-    if ( ! open $fh, '<', "/proc/$pid/smaps" ) {
-        return if ENOENT == $!;
-        warn "Can't open /proc/$pid/maps: $!";
-        return;
-    }
-
-    while ( my $line = <$fh> ) {
-        print $line;
-    }
+    $self->send( $c );
+    $self->expectPrompt;
 
     $self;
 }
