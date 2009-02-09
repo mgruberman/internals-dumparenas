@@ -1,4 +1,4 @@
-#!/opt/perl-5.10.0/bin/perl
+#!perl
 
 use Internals::DumpArenas;
 
@@ -6,21 +6,34 @@ Puke->main( splice @ARGV );
 exit;
 
 package Puke;
+
+=head1 NAME
+
+puke - pukes a perl process's guts
+
+=head1 SYNOPSIS
+
+  puke
+    --pid pid   # puke the contents of a pid
+    --help      # display this help
+
+=cut
+
 use Moose;
 #...
 no Moose;
 use Getopt::Long 'GetOptions';
+use Pod::Usage qw( pod2usage );
 
 sub main {
     local ( undef, @ARGV ) = @_;
     GetOptions(
                'pid=i' => \my( $pid ),
-
-               help => sub { die },
+               help => sub { pod2usage( -verbose => 2 ) },
               )
-        or die;
+        or pod2usage( -verbose => 0 );
     if ( ! $pid ) {
-        die;
+        pod2usage( -verbose => 0 );
     }
 
     my $perl = Perl->attachToPid( pid => $pid  );
@@ -100,7 +113,6 @@ sub gdbAttachToPid {
     $self->gdb( $gdb );
 
     # Threaded?
-    $DB::signal = 1;
     $self->perlContextPtr( $self->gdbGetContext );
 
     # Get a better subclass.
