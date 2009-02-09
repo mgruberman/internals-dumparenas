@@ -1,0 +1,85 @@
+=head1 NAME
+
+Internals::DumpArenas - Dump perl memory
+
+=head1 DESCRIPTION
+
+I was inspired by L<http://netjam.org/spoon/viz/> and want to make the
+same thing for perl. This module iterates dumps everything in every
+arena.
+
+
+
+=head1 FUNCTIONS
+
+=head2 DumpArenas()
+
+Dumps everything to STDERR.
+
+
+
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-Internals-DumpArenas at rt.cpan.org>, or through the web
+interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Internals-DumpArenas>.
+I will be notified, and then you'll automatically be notified of
+progress on your bug as I make changes.
+
+
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+  perldoc Internals::DumpArenas
+
+You can also look for information at:
+
+=over
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Internals-DumpArenas>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Internals-DumpArenas>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Internals-DumpArenas>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Internals-DumpArenas/>
+
+=back
+
+
+
+=head1 ACKNOWLEDGEMENTS
+
+Brian Rice, totally.
+
+
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2009 Joshua ben Jore, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+
+
+=head1 SOURCE AVAILABILITY
+
+This source is in Github: L<git://github.com/jbenjore/internals-dumparenas.git>
+
+
+
+=head1 AUTHOR
+
+Joshua ben Jore

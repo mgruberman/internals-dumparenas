@@ -1,0 +1,13 @@
+use Inline 'C';
+
+print STDERR '1 @ '.fileno(*STDERR)."\n";
+c( fileno *STDERR );
+print STDERR '3 @ '.fileno(*STDERR)."\n";
+
+__END__
+__C__
+void c( int fn ) {
+	PerlIO *f = (PerlIO*)fdopen( fn, "w" );
+	fprintf( f, "2 @ %d\n", fn );
+	fclose( f );
+}

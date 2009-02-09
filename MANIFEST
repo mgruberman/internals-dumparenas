@@ -1,0 +1,15 @@
+bin/puke
+Changes
+DumpArenas.xs
+DumpArenas.pm
+DumpArenas.pod
+eg/moose
+eg/moose.map
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+META.yml			Module meta-data (added by MakeMaker)
+ppport.h
+README
+t/10-use.t
+util/fdclose
