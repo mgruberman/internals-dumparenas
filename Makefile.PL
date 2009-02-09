@@ -8,6 +8,13 @@ WriteMakefile(
 	AUTHOR            => 'Joshua ben Jore <jjore@cpan.org>',
 	PREREQ_PM => {
 		'Sub::Exporter' => 0,
+
+        # bin/puke
+        'Moose' => 0,
+        'parent' => 0,
+        'Pod::Usage' => 0,
+        'Expect' => 0,
+        'IO::Stty' => 0,
 	},
     EXE_FILES => [ 'bin/puke' ],
 );
