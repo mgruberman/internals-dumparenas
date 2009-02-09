@@ -1,5 +1,6 @@
 \.(?:o|bs)$
 [~#]
+^eg/moose
 ^blib
 ^DumpArenas\.c$
 ^Internals-DumpArenas

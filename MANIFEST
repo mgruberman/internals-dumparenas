@@ -3,8 +3,6 @@ Changes
 DumpArenas.xs
 DumpArenas.pm
 DumpArenas.pod
-eg/moose
-eg/moose.map
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
