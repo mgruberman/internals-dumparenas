@@ -7,7 +7,7 @@ void
 DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
   I32 key = 0;
 
-  PerlIO_printf(f,"AvARRAY(0x%x) = {",AvARRAY(sv));
+  PerlIO_printf(f,"AvARRAY(0x%x) = {",(int)AvARRAY(sv));
   if ( AvMAX(sv) != AvFILL(sv) ) {
     PerlIO_puts(f,"{");
   }
@@ -26,7 +26,7 @@ DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
       PerlIO_puts(f,"PL_sv_placeholder");
     }
     else {
-      PerlIO_printf(f,"0x%x", AvARRAY(sv)[key]);
+      PerlIO_printf(f,"0x%x", (int)AvARRAY(sv)[key]);
     }
     
     /* Join with something */
@@ -51,7 +51,7 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
   HE *entry;
   SV *tmp = newSVpv("",0);
 
-  PerlIO_printf(f,"ARRAY(0x%x)\n",HvARRAY(sv));
+  PerlIO_printf(f,"ARRAY(0x%x)\n",(int)HvARRAY(sv));
 
   for ( key = 0; key <= HvMAX(sv); ++key ) {
     for ( entry = HvARRAY(sv)[key]; entry; entry = HeNEXT(entry) ) {
@@ -62,12 +62,12 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
       else {
         PerlIO_printf(
           f, "    [0x%x %s] => 0x%x\n",
-          HeKEY(entry),
+          (int)HeKEY(entry),
           pv_display(
             tmp,
             HeKEY(entry), HeKLEN(entry), HeKLEN(entry),
             0 ),
-          HeVAL(entry) );
+          (int)HeVAL(entry) );
       }
     }
   }
@@ -109,7 +109,7 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
     const SV *const arena_end = &arena[SvREFCNT(arena)];
     SV *sv;
     
-    PerlIO_printf(f,"START ARENA = (0x%x-0x%x)\n\n",arena,arena_end);
+    PerlIO_printf(f,"START ARENA = (0x%x-0x%x)\n\n",(int)arena,(int)arena_end);
     for (sv = arena + 1; sv < arena_end; ++sv) {
       if (SvTYPE(sv) != SVTYPEMASK
           && SvREFCNT(sv)) {
@@ -140,10 +140,10 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
         }
       }
       else {
-        PerlIO_printf(f,"AVAILABLE(0x%x)\n\n",sv);
+        PerlIO_printf(f,"AVAILABLE(0x%x)\n\n",(int)sv);
       }
     }
-    PerlIO_printf(f,"END ARENA = (0x%x-0x%x)\n\n",arena,arena_end);
+    PerlIO_printf(f,"END ARENA = (0x%x-0x%x)\n\n",(int)arena,(int)arena_end);
   }
 }
 
