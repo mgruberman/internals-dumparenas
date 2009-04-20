@@ -115,7 +115,7 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
           && SvREFCNT(sv)) {
 
         /* Dump the plain SV */
-        do_sv_dump(0,f,sv,0,0,0,0);
+        do_sv_dump( aTHX_ 0,f,sv,0,0,0,0);
         PerlIO_puts(f,"\n");
         
         /* Dump AvARRAY(0x...) = {{0x...,0x...}{0x...}} */
@@ -123,17 +123,17 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
         case SVt_PVAV:
           if ( AvARRAY(sv)
                && AvMAX(sv) != -1 ) {
-            DumpAvARRAY(f,sv);
+            DumpAvARRAY( aTHX_ f,sv);
           }
           break;
         case SVt_PVHV:
           if ( HvARRAY(sv)
                && HvMAX(sv) != -1 ) {
-            DumpHvARRAY(f,sv);
+            DumpHvARRAY( aTHX_ f,sv);
           }
           
           if ( ! HvSHAREKEYS(sv) ) {
-            /* DumpHashKeys(f,sv); */
+            /* DumpHashKeys( aTHX_ f,sv); */
           }
           
           break;
