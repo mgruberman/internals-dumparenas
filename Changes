@@ -1,7 +1,28 @@
 Revision history for Perl extension Internals::DumpArenas.
 
-0.01  Tue May  1 14:06:40 2007
-	- original version; created by h2xs 1.23 with options
-		-n Internals::SvReportUsed
+9e4f46979575dcc62d16cd2b6288ec99c5e39190 Try do_sv_dump(...) w/o aTHX_
+a32dec5acc7d25a44b67e149eb0972f811d5a6ea Add (int) casts to quiet warnings
+51cf400938466fa3aa4c1acd8562f44b2f4d9644 Pass THX everywhere it seems to be needed
 
-0.02
+939a09c9677ce3d4f833cea13079c0211d14154f 0.07
+c09a9fbad7020fdc7e47262d56f60c354114c80a syntax fix bin/puke
+
+af0fb223c6479bbaa344a2c57ba6c1785b6118eb 0.06
+5fa917498d0c66ed9a18838e4e79ff5c7ca56570 add bin/puke depends
+
+fd1de04f421ebce3ec4d4a7677a99626c1420b82 0.05
+3950fc13dcf94c775cb2dede76eedb7f3c352af0 add Perl::Threaded
+54b5e944bcac229d1f89e427468a8e0cd8c52958 fixing syntax in bin/puke
+976bab36d3bb5cfa71e780fd7ad11d115f2fc15e Pushing /proc/.../{smaps,maps} into target process dump
+
+bc024b5aeaaea809cc7440b90f28bc538734a143 0.04
+8b66dccd25839411dcc9313995adaf0a108c2a9a Removing bogus moose data
+
+1aaf50e84207ee38493412741548d883522ec78c 0.03
+78f0523e19575df1afa0cd93989a2d40be7ff3db documenting bin/puke removed debugging code
+c56bf7a4f03c7d7ed92d5537f175feea28c18e48 adding puke program
+6ed287a47d28b185049925a79f29a38e0bd51848 executable puke
+
+6bdda234259822b7484fdc5d62064de7c2c17b54 0.02
+9c03fb2d578d10a1bc4efdc2adb62aad0685abb9 Fixing paths, author email
+6747f6f219cfc0a3541e44fc85ecf74e305bfefc adding everything
