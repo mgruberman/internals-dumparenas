@@ -115,7 +115,7 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
           && SvREFCNT(sv)) {
 
         /* Dump the plain SV */
-        do_sv_dump( aTHX_ 0,f,sv,0,0,0,0);
+        do_sv_dump(0,f,sv,0,0,0,0);
         PerlIO_puts(f,"\n");
         
         /* Dump AvARRAY(0x...) = {{0x...,0x...}{0x...}} */
