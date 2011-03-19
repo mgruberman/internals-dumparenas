@@ -1,5 +1,5 @@
-use Test::More tests => 2;
-BEGIN { use_ok('Internals::DumpArenas') };
+use Test::More tests => 1;
+use Internals::DumpArenas;
 
 Internals::DumpArenas::DumpArenas();
 pass( 'Still alive' );
