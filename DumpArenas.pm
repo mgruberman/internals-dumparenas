@@ -1,8 +1,5 @@
 package Internals::DumpArenas;
 
-use strict;
-use warnings;
-
 # $ perl ppport.h
 # Scanning ./DumpArenas.xs ...
 # === Analyzing ./DumpArenas.xs ===
@@ -23,7 +20,6 @@ use warnings;
 # Looks good
 use 5.006_000;
 
-use vars qw( $VERSION @ISA @EXPORT_OK %EXPORT_TAGS );
 $VERSION = '0.08';
 
 use DynaLoader ();
