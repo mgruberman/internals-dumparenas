@@ -27,7 +27,7 @@ use vars qw( $VERSION @ISA @EXPORT_OK %EXPORT_TAGS );
 $VERSION = '0.08';
 
 use DynaLoader ();
-sub dl_load_flags { 0x01 }
+sub dl_load_flags { return 0x01 }
 DynaLoader::bootstrap('Internals::DumpArenas', $VERSION);
 
 use Exporter ();
@@ -36,7 +36,7 @@ use Exporter ();
 %EXPORT_TAGS = ( all => [ @EXPORT_OK ] );
 
 no warnings;
-qq{ ...A most horrible treasure, this Great Ring," said Frito.
+q{ ...A most horrible treasure, this Great Ring," said Frito.
 
 "And a horrible burden for he who bears it," said Goodgulf, "for some
 unlucky one must carry it from Sorhed's grasp into danger and certain
