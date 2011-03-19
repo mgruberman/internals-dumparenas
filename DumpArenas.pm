@@ -23,18 +23,17 @@ use warnings;
 # Looks good
 use 5.006_000;
 
-use vars qw( $VERSION );
+use vars qw( $VERSION @ISA @EXPORT_OK %EXPORT_TAGS );
 $VERSION = '0.08';
 
 use DynaLoader ();
 sub dl_load_flags { 0x01 }
 DynaLoader::bootstrap('Internals::DumpArenas', $VERSION);
 
-use Sub::Exporter -setup => {
-	exports => [
-		qw( DumpArenas DumpArenasFd ),
-	],
-};
+use Exporter ();
+@ISA = 'Exporter';
+@EXPORT_OK = qw( DumpArenas DumpArenasFd );
+%EXPORT_TAGS = ( all => [ @EXPORT_OK ] );
 
 no warnings;
 qq{ ...A most horrible treasure, this Great Ring," said Frito.
