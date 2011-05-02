@@ -32,7 +32,9 @@ DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
     
     /* Join with something */
     if ( AvMAX(sv) == AvFILL(sv) ) {
-      PerlIO_puts(f, AvMAX(sv) == key ? "}" : ",");
+      if (key != AvMAX(sv)) {
+        PerlIO_puts(f, ",");
+      }
     }
     else {
       PerlIO_puts(
