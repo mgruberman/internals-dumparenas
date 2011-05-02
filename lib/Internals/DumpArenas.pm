@@ -1,4 +1,5 @@
 package Internals::DumpArenas;
+#ABSTRACT: Dump perl memory
 
 use 5.006_000;
 
