@@ -9,4 +9,3 @@ META.yml			Module meta-data (added by MakeMaker)
 ppport.h
 README
 t/10-use.t
-util/fdclose

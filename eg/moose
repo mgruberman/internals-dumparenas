@@ -1,4 +1,0 @@
-#!/usr/local/bin/perl
-use Internals::DumpArenas;
-use Moose;
-Internals::DumpArenas();
