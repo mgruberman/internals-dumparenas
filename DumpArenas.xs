@@ -3,6 +3,21 @@
 #include "XSUB.h"
 #include "ppport.h"
 
+void DumpPointer( pTHX_ PerlIO *f, SV *sv ) {
+  if ( &PL_sv_undef == sv ) {
+    PerlIO_puts(f, "PL_sv_undef");
+  }
+  else if (&PL_sv_yes == sv) {
+    PerlIO_puts(f, "PL_sv_yes");
+  }
+  else if (&PL_sv_no == sv) {
+    PerlIO_puts(f, "PL_sv_no");
+  }
+  else if (&PL_sv_placeholder) {
+    PerlIO_printf(f, "%#x", (int)sv);
+  }
+}
+
 void
 DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
   I32 key = 0;
@@ -13,21 +28,7 @@ DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
   }
   
   for ( key = 0; key <= AvMAX(sv); ++key ) {
-    if ( &PL_sv_undef == AvARRAY(sv)[key] ) {
-      PerlIO_puts(f,"PL_sv_undef");
-    }
-    else if ( &PL_sv_yes == AvARRAY(sv)[key] ) {
-      PerlIO_puts(f,"PL_sv_yes");
-    }
-    else if ( &PL_sv_no == AvARRAY(sv)[key] ) {
-      PerlIO_puts(f,"PL_sv_no");
-    }
-    else if ( &PL_sv_placeholder == AvARRAY(sv)[key] ) {
-      PerlIO_puts(f,"PL_sv_placeholder");
-    }
-    else {
-      PerlIO_printf(f,"0x%x", (int)AvARRAY(sv)[key]);
-    }
+    DumpPointer(aTHX_ f, AvARRAY(sv)[key]);
     
     /* Join with something */
     if ( AvMAX(sv) == AvFILL(sv) ) {
@@ -61,13 +62,14 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
       }
       else {
         PerlIO_printf(
-          f, "    [0x%x %s] => 0x%x\n",
+          f, "    [0x%x %s] => ",
           (int)HeKEY(entry),
           pv_display(
             tmp,
             HeKEY(entry), HeKLEN(entry), HeKLEN(entry),
-            0 ),
-          (int)HeVAL(entry) );
+            0 ));
+        DumpPointer(aTHX_ f, HeVAL(entry));
+        PerlIO_puts(f, "\n");
       }
     }
   }
