@@ -22,7 +22,7 @@ void
 DumpAvARRAY( pTHX_ PerlIO *f, SV *sv) {
   I32 key = 0;
 
-  PerlIO_printf(f,"AvARRAY(0x%x) = {",(int)AvARRAY(sv));
+  PerlIO_printf(f,"AvARRAY(%#x) = {",(int)AvARRAY(sv));
   if ( AvMAX(sv) != AvFILL(sv) ) {
     PerlIO_puts(f,"{");
   }
@@ -52,17 +52,17 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
   HE *entry;
   SV *tmp = newSVpv("",0);
 
-  PerlIO_printf(f,"ARRAY(0x%x)\n",(int)HvARRAY(sv));
+  PerlIO_printf(f,"ARRAY(%#x)\n",(int)HvARRAY(sv));
 
   for ( key = 0; key <= HvMAX(sv); ++key ) {
     for ( entry = HvARRAY(sv)[key]; entry; entry = HeNEXT(entry) ) {
       if ( HEf_SVKEY == HeKLEN(entry) ) {
         croak("not implemented");
-        /* PerlIO_printf(f, "    [SV 0x%x %s] => 0x%x\n", HeKEY(entry), pv_display(tmp,SvPVHeVAL(entry) );*/
+        /* PerlIO_printf(f, "    [SV %#x %s] => %#x\n", HeKEY(entry), pv_display(tmp,SvPVHeVAL(entry) );*/
       }
       else {
         PerlIO_printf(
-          f, "    [0x%x %s] => ",
+          f, "    [%#x %s] => ",
           (int)HeKEY(entry),
           pv_display(
             tmp,
@@ -85,15 +85,15 @@ DumpHashKeys( aTHX_ PerlIO *f, SV *sv) {
   HE *entry;
   SV *tmp = newSVpv("",0);
 
-  PerlIO_printf(f,"HASH KEYS at 0x%x\n",sv);
+  PerlIO_printf(f,"HASH KEYS at %#x\n",sv);
   
   for ( key = 0; key <= HvMAX(sv); ++key ) {
     for ( entry = HvARRAY(sv)[key]; entry; entry = HeNEXT(entry) ) {
       if ( HEf_SVKEY == HeKLEN(entry) ) {
-        PerlIO_printf(f, "    SV 0x%x\n", HeKEY(entry) );
+        PerlIO_printf(f, "    SV %#x\n", HeKEY(entry) );
       }
       else {
-        PerlIO_printf(f, "    0x%x %s\n", HeKEY(entry), pv_display( (SV*)tmp, (const char*)HeKEY(entry), HeKLEN(entry), HeKLEN(entry), 0 ) );
+        PerlIO_printf(f, "    %#x %s\n", HeKEY(entry), pv_display( (SV*)tmp, (const char*)HeKEY(entry), HeKLEN(entry), HeKLEN(entry), 0 ) );
       } 
     }
   }
@@ -111,7 +111,7 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
     const SV *const arena_end = &arena[SvREFCNT(arena)];
     SV *sv;
     
-    PerlIO_printf(f,"START ARENA = (0x%x-0x%x)\n\n",(int)arena,(int)arena_end);
+    PerlIO_printf(f,"START ARENA = (%#x-%#x)\n\n",(int)arena,(int)arena_end);
     for (sv = arena + 1; sv < arena_end; ++sv) {
       if (SvTYPE(sv) != SVTYPEMASK
           && SvREFCNT(sv)) {
@@ -142,10 +142,10 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
         }
       }
       else {
-        PerlIO_printf(f,"AVAILABLE(0x%x)\n\n",(int)sv);
+        PerlIO_printf(f,"AVAILABLE(%#x)\n\n",(int)sv);
       }
     }
-    PerlIO_printf(f,"END ARENA = (0x%x-0x%x)\n\n",(int)arena,(int)arena_end);
+    PerlIO_printf(f,"END ARENA = (%#x-%#x)\n\n",(int)arena,(int)arena_end);
   }
 }
 
