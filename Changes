@@ -1,9 +1,12 @@
 Revision history for Perl extension Internals::DumpArenas.
 
-6f8c65b7c8d164ccfbe41c90f3699a0310dab7fe Update hash printing
-6cc12a376f66139aa29151427c3d988ada4b7c46 Avoid printing extra closing } in arrays
-5dfa617cfee8ceb6625c05d359d26f1ddcf94c0c Use %#x formatting
-833064340afffd57fdab7b6d8bb7de19c0308a39 Pretty-print SV pointers
+b817287d7a7153523be26d63032a561ebfbce111 Declare PERL_CORE
+590ab6402b2ceef602d535258e4fce87934afe82 Build with dzil
+c0b6cc424ea0106ca39f89e72eea69745984c224 Update changelog
+77b7ed14334dfb6067affb076189ea3e0254c416 Update hash printing
+0ed2a8b015591ba35ce9afb4e0484c42240c64f8 Avoid printing extra closing } in arrays
+9dca2f4b7d5ae868f386926384d407eddfdc5515 Use %#x formatting
+dccec69e52d5bb1d57e5ea7cac73aa87030e1636 Pretty-print SV pointers
 61b75bf7d13becdd726f86eba574ca5bd43f0ac6 Update documentation
 050fc4fa421a3e3b77f0311dad1b5d37cfe4e3ad Remove cruft
 84fee97a05cac935bff8e2bbc22df8f95c2dbbf0 Remove cruft
