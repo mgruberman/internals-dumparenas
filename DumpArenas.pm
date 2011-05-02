@@ -1,23 +1,5 @@
 package Internals::DumpArenas;
 
-# $ perl ppport.h
-# Scanning ./DumpArenas.xs ...
-# === Analyzing ./DumpArenas.xs ===
-# Uses PL_sv_arenaroot
-# Uses PL_sv_no
-# Uses PL_sv_undef
-# Uses PL_sv_yes
-# Uses aTHX
-# Uses aTHX_
-# Uses pTHX
-# Uses pTHX_
-# *** Uses HEf_SVKEY, which may not be portable below perl 5.004
-# *** Uses HeKEY, which may not be portable below perl 5.004
-# *** Uses HeKLEN, which may not be portable below perl 5.004
-# *** Uses HeVAL, which may not be portable below perl 5.004
-# *** Uses do_sv_dump, which may not be portable below perl 5.6.0
-# *** Uses pv_display, which may not be portable below perl 5.6.0
-# Looks good
 use 5.006_000;
 
 $VERSION = '0.08';
