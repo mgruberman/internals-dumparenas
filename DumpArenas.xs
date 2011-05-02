@@ -1,4 +1,14 @@
+/* This code uses several internal APIs. I'm declaring PERL_CORE
+ * purely so this is visible to anyone grepping CPAN for code that
+ * does this sort of thing.
+ *
+ *   Copied and pasted structure of S_visit from sv.c
+ *   Used PL_sv_arenaroot
+ *   Used do_sv_dump (instead of sv_dump)
+ *   Used pv_display
+ */
 #define PERL_CORE
+
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
@@ -113,7 +123,10 @@ DumpArenasPerlIO( pTHX_ PerlIO *f) {
   for (arena = PL_sv_arenaroot; arena; arena = (SV*)SvANY(arena)) {
     const SV *const arena_end = &arena[SvREFCNT(arena)];
     SV *sv;
-    
+
+    /* See also the static function S_visit in perl's sv.c
+     * This is a copied and pasted implementation of that function.
+     */
     PerlIO_printf(f,"START ARENA = (%#x-%#x)\n\n",(int)arena,(int)arena_end);
     for (sv = arena + 1; sv < arena_end; ++sv) {
       if (SvTYPE(sv) != SVTYPEMASK
