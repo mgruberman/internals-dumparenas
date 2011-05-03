@@ -1,5 +1,14 @@
 Revision history for Perl extension Internals::DumpArenas.
 
+d2f657663744929fba1eacbc7caeac9d2abbb538 0.12
+b326ae2fb7c0c6ce16e28b9b84ce9e3ecbcb5527 Allow printing hash keys that are full SV*
+12b2d7800b6a9c15ef004ea454f58ce61fd20bd5 Update ppport.h
+e5fdcd109c174d617265e0dbbe0fc707d0367934 Document the XS a little
+
+114310d697335e2114b6f99df6f15cc6aeb40ca7 0.11
+1ff300a95fe2229d0b0db5774fec41c1bbca26c3 Update documentation
+
+2ed5a39cc66790674fe978fd230998ef917c2c5d 0.09
 b817287d7a7153523be26d63032a561ebfbce111 Declare PERL_CORE
 590ab6402b2ceef602d535258e4fce87934afe82 Build with dzil
 c0b6cc424ea0106ca39f89e72eea69745984c224 Update changelog
