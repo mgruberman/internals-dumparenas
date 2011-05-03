@@ -70,8 +70,9 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
   for ( key = 0; key <= HvMAX(sv); ++key ) {
     for ( entry = HvARRAY(sv)[key]; entry; entry = HeNEXT(entry) ) {
       if ( HEf_SVKEY == HeKLEN(entry) ) {
-        croak("not implemented");
-        /* PerlIO_printf(f, "  [SV %#x %s] => %#x\n", HeKEY(entry), pv_display(tmp,SvPVHeVAL(entry) );*/
+        PerlIO_printf(
+          f, "  [SV %#x] => ",
+          (int)HeKEY(entry));
       }
       else {
         PerlIO_printf(
@@ -81,9 +82,9 @@ DumpHvARRAY( pTHX_ PerlIO *f, SV *sv) {
             tmp,
             HeKEY(entry), HeKLEN(entry), HeKLEN(entry),
             0 ));
-        DumpPointer(aTHX_ f, HeVAL(entry));
-        PerlIO_puts(f, "\n");
       }
+      DumpPointer(aTHX_ f, HeVAL(entry));
+      PerlIO_puts(f, "\n");
     }
   }
   PerlIO_puts(f,"\n");
